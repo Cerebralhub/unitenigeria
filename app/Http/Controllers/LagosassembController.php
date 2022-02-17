@@ -10,6 +10,11 @@ class LagosassembController extends Controller
     //   //
     public function index()
     {
+
+        if(!session()->has('user')){
+            return redirect('/login')->with('warning', 'Please login to access the list of those who have registered');
+
+        }else{
         if(request()->ajax()) {
             return datatables()->of(Lagosassemb::select('*'))
             ->addColumn('action', 'house_of_assembly/lagos-assembly-action')
@@ -19,7 +24,7 @@ class LagosassembController extends Controller
         }
         return view('house_of_assembly/lagos-assembly-list');
     }
-     
+}
      
     /**
      * Store a newly created resource in storage.
@@ -29,6 +34,11 @@ class LagosassembController extends Controller
      */
     public function store(Request $request)
     {  
+
+        if(!session()->has('user')){
+            return redirect('/login')->with('warning', 'Please login to access the list of those who have registered');
+
+        }else{
         $bookId = $request->id;
         $book   =   Lagosassemb::updateOrCreate(
                     [
@@ -46,6 +56,7 @@ class LagosassembController extends Controller
                     ]);        
         return Response()->json($book);
     }
+}
      
      
     /**
@@ -56,11 +67,17 @@ class LagosassembController extends Controller
      */
     public function edit(Request $request)
     {   
+
+        if(!session()->has('user')){
+            return redirect('/login')->with('warning', 'Please login to access the list of those who have registered');
+
+        }else{
         $where = array('id' => $request->id);
         $book  = Lagosassemb::where($where)->first();
      
         return Response()->json($book);
     }
+}
      
      
     /**
@@ -71,9 +88,15 @@ class LagosassembController extends Controller
      */
     public function destroy(Request $request)
     {
+
+        if(!session()->has('user')){
+            return redirect('/login')->with('warning', 'Please login to access the list of those who have registered');
+
+        }else{
         $book = Lagosassemb::where('id',$request->id)->delete();
      
         return Response()->json($book);
     }
+}
 }
 

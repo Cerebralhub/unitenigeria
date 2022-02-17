@@ -11,6 +11,11 @@ class HorController extends Controller
     //
     public function index()
     {
+
+        if(!session()->has('user')){
+            return redirect('/login')->with('warning', 'Please login to access the list of those who have registered');
+
+        }else{
         if(request()->ajax()) {
             return datatables()->of(Hor::select('*'))
             ->addColumn('action', 'hor/hor-action')
@@ -20,6 +25,7 @@ class HorController extends Controller
         }
         return view('hor/hor-list');
     }
+}
      
      
     /**
@@ -30,6 +36,11 @@ class HorController extends Controller
      */
     public function store(Request $request)
     {  
+
+        if(!session()->has('user')){
+            return redirect('/login')->with('warning', 'Please login to access the list of those who have registered');
+
+        }else{
         $bookId = $request->id;
         $book   =   Hor::updateOrCreate(
                     [
@@ -47,6 +58,7 @@ class HorController extends Controller
                     ]);        
         return Response()->json($book);
     }
+}
      
      
     /**
@@ -57,12 +69,17 @@ class HorController extends Controller
      */
     public function edit(Request $request)
     {   
+
+        if(!session()->has('user')){
+            return redirect('/login')->with('warning', 'Please login to access the list of those who have registered');
+
+        }else{
         $where = array('id' => $request->id);
         $book  = Hor::where($where)->first();
      
         return Response()->json($book);
     }
-     
+}
      
     /**
      * Remove the specified resource from storage.
@@ -72,9 +89,14 @@ class HorController extends Controller
      */
     public function destroy(Request $request)
     {
+        if(!session()->has('user')){
+            return redirect('/login')->with('warning', 'Please login to access the list of those who have registered');
+
+        }else{
         $book = Hor::where('id',$request->id)->delete();
      
         return Response()->json($book);
     }
+}
 }
 

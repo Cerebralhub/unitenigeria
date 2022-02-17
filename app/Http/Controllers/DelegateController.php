@@ -10,6 +10,11 @@ class DelegateController extends Controller
     //
     public function index()
     {
+
+        if(!session()->has('user')){
+            return redirect('/login')->with('warning', 'Please login to access the list of those who have registered');
+
+        }else{
         if(request()->ajax()) {
             return datatables()->of(Delegate::select('*'))
             ->addColumn('action', 'delegate/delegate-action')
@@ -19,6 +24,7 @@ class DelegateController extends Controller
         }
         return view('delegate/delegate-list');
     }
+}
      
      
     /**
@@ -29,6 +35,11 @@ class DelegateController extends Controller
      */
     public function store(Request $request)
     {  
+
+        if(!session()->has('user')){
+            return redirect('/login')->with('warning', 'Please login to access the list of those who have registered');
+
+        }else{
         $bookId = $request->id;
         $book   =   Delegate::updateOrCreate(
                     [
@@ -44,7 +55,7 @@ class DelegateController extends Controller
                     ]);        
         return Response()->json($book);
     }
-     
+}
      
     /**
      * Show the form for editing the specified resource.
@@ -54,11 +65,17 @@ class DelegateController extends Controller
      */
     public function edit(Request $request)
     {   
+
+        if(!session()->has('user')){
+            return redirect('/login')->with('warning', 'Please login to access the list of those who have registered');
+
+        }else{
         $where = array('id' => $request->id);
         $book  = Delegate::where($where)->first();
      
         return Response()->json($book);
     }
+}
      
      
     /**
@@ -69,9 +86,14 @@ class DelegateController extends Controller
      */
     public function destroy(Request $request)
     {
+        if(!session()->has('user')){
+            return redirect('/login')->with('warning', 'Please login to access the list of those who have registered');
+
+        }else{
         $book = Delegate::where('id',$request->id)->delete();
      
         return Response()->json($book);
     }
+}
 }
 

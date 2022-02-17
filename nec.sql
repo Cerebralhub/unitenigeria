@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Feb 17, 2022 at 10:45 AM
+-- Generation Time: Feb 17, 2022 at 11:39 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -653,8 +653,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `sname`, `fname`, `token`, `email`, `password`, `created_at`, `updated_at`) VALUES
-(1, 'Token', 'Registration', '$2y$10$9RbDO3d5afyXo7vP2Ry/DuCKQEgsyg4n5OnDQ/0KJraMrRYwg9yd.', 'token@gmail.com', '$2y$10$I01SJqRN0XjGcIp/XpDRVuGEKuKAJaaN4wz7rwEdW2FL7RRnFSrmy', NULL, NULL),
-(2, 'Mimi', 'Meki', '54321', 'meki@gmail.com', '$2y$10$uXFHYMsg16Dens6CM6MDZeP8BO1FOefRwyXYzB.gVD5d1dJmo0K.S', '2021-10-12 15:06:27', '2021-10-12 15:06:27');
+(3, 'Unite', 'Nigeria', '$2y$10$SUTLqdrljVAsppxoTt0WP.brqyCz9XO2BwUguOBf2Cm/h4SS6GJgi', 'info@unitenigeria.ng', '$2y$10$b3B5FzEYsc9nyaskzlOjE.3LLtLPfRqXuRjn467Fih3.v5p65eBFq', '2022-02-17 09:36:58', '2022-02-17 09:36:58');
 
 --
 -- Indexes for dumped tables
@@ -816,7 +815,7 @@ ALTER TABLE `supporters`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

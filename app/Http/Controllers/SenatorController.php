@@ -11,6 +11,11 @@ class SenatorController extends Controller
 
     public function index()
     {
+
+        if(!session()->has('user')){
+            return redirect('/login')->with('warning', 'Please login to access the list of those who have registered');
+
+        }else{
         if(request()->ajax()) {
             return datatables()->of(Senator::select('*'))
             ->addColumn('action', 'senator/senator-action')
@@ -20,7 +25,7 @@ class SenatorController extends Controller
         }
         return view('senator/senator-list');
     }
-     
+}
      
     /**
      * Store a newly created resource in storage.
@@ -30,6 +35,11 @@ class SenatorController extends Controller
      */
     public function store(Request $request)
     {  
+
+        if(!session()->has('user')){
+            return redirect('/login')->with('warning', 'Please login to access the list of those who have registered');
+
+        }else{
         $bookId = $request->id;
         $book   =   Senator::updateOrCreate(
                     [
@@ -47,6 +57,7 @@ class SenatorController extends Controller
                     ]);        
         return Response()->json($book);
     }
+}
      
      
     /**
@@ -57,11 +68,17 @@ class SenatorController extends Controller
      */
     public function edit(Request $request)
     {   
+
+        if(!session()->has('user')){
+            return redirect('/login')->with('warning', 'Please login to access the list of those who have registered');
+
+        }else{
         $where = array('id' => $request->id);
         $book  = Senator::where($where)->first();
      
         return Response()->json($book);
     }
+}
      
      
     /**
@@ -72,9 +89,15 @@ class SenatorController extends Controller
      */
     public function destroy(Request $request)
     {
+
+        if(!session()->has('user')){
+            return redirect('/login')->with('warning', 'Please login to access the list of those who have registered');
+
+        }else{
         $book = Senator::where('id',$request->id)->delete();
      
         return Response()->json($book);
     }
+}
 }
 
