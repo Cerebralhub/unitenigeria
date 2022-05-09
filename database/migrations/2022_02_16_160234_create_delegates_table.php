@@ -15,12 +15,29 @@ class CreateDelegatesTable extends Migration
     {
         Schema::create('delegates', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('state');
-            $table->string('lga');
-            $table->string('category');
-            $table->string('phone_no');
-            $table->string('email');
+            $table->string('title')->nullable();
+            $table->string('name')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('state')->nullable();
+            $table->string('lga')->nullable();
+            $table->string('representing')->nullable();
+            $table->string('constituency')->nullable();
+            $table->string('year')->nullable();
+            $table->string('business1')->nullable();
+            $table->string('business2')->nullable();
+            $table->string('business3')->nullable();
+            $table->string('business4')->nullable();
+            $table->string('business5')->nullable();
+            $table->string('business6')->nullable();
+            $table->string('view')->nullable();
+            $table->string('former')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('linkedln')->nullable();
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }

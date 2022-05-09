@@ -11,6 +11,10 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HoaController;
 use App\Http\Controllers\LagosassembController;
 use App\Http\Controllers\DelegateController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProductController;
+
 
 
 
@@ -27,7 +31,12 @@ use App\Http\Controllers\DelegateController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('/login');
+});
+
+
+Route::get('/work', function () {
+    return view('work-plan/index');
 });
 
 
@@ -60,16 +69,30 @@ Route::post('/edit-lagos-assembly', [LagosassembController::class, 'edit']);
 Route::post('/delete-lagos-assembly', [LagosassembController::class, 'destroy']);
 
 
-Route::get('/delegate', [DelegateController::class, 'index']);
-Route::post('/add-delegate', [DelegateController::class, 'store']);
-Route::post('/edit-delegate', [DelegateController::class, 'edit']);
-Route::post('/delete-delegate', [DelegateController::class, 'destroy']);
+Route::get('/delegate', [DelegateController::class, 'list']);
+Route::get('delegate-form', [DelegateController::class, 'form']);
+Route::post('delegate-add', [DelegateController::class, 'register']);
+Route::get('delegate-profile', [DelegateController::class, 'profile']);
+Route::get('delegate-list', [DelegateController::class, 'list']);
+Route::get('delegate-profile-single/{id}', [DelegateController::class, 'single']);
+Route::get('delegate-edit/{id}', [DelegateController::class, 'edit']);
+Route::get('delegate-delete/{id}', [DelegateController::class, 'delete']);
+Route::patch('delegate-update/{id}', [DelegateController::class, 'update']);
 
 
 Route::get('/test', [UserController::class, 'create']);
 Route::get('/test', [UserController::class, 'create']);
 Route::post('/test', [UserController::class, 'store']);
 
+
+
+Route::get('profile', [ProfileController::class, 'index']);
+Route::get('add-profile', [ProfileController::class, 'create']);
+Route::post('add-profile', [ProfileController::class, 'store']);
+Route::get('edit-profile/{id}', [ProfileController::class, 'edit']);
+Route::put('update-profile/{id}', [ProfileController::class, 'update']);
+Route::delete('delete-profile/{id}', [ProfileController::class, 'destroy']);
+Route::get('search-profile', [ProfileController::class, 'search']);
 
 
 

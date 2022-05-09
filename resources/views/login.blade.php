@@ -1,45 +1,29 @@
-@extends('master')
-@section('content')
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/login.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
 
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="container">
 
-<div class="landingPage">
-  
-<img src="{{url('/images/pic7.jpg')}}" alt="register" width="100%">
-
-</div>
-
-
-
-    <div class="container custom-login">
-        <div class="col-md-12" style="padding:20%; padding-top:5%; padding-bottom: 10%;">
-        <h1>Log in</h1> </br/>
-
-        @if(Session::has('warning'))
-            <div class="alert alert-danger">
-                {{ Session::get('warning') }}
-                @php
-                    Session::forget('warning');
-                @endphp
-            </div>
-            @endif
-
-            <br/>
-            <form action="login" method="post">
-                 @csrf
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                    <!-- <small id="emailHelp" email="email" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password"><br/><br/>
-                    <button type="submit" class="btn btn-primary">Login</button>
-                    
-                    <!-- <a href="/registerUser">create an account</a> -->
-               
-                </div>
-            </form>
+      <form method="post" action="login" >
+          @csrf
+        <div class="title">Login</div>
+        <div class="input-box underline">
+          <input type="email" name="email" placeholder="Enter Your Email" required>
+          <div class="underline"></div>
+        </div>
+        <div class="input-box">
+          <input type="password" name="password" placeholder="Enter Your Password" required>
+          <div class="underline"></div>
+        </div><br/><br/>
+        <button type="submit" class="btn btn-primary">Log in</button>
+      </form>
     </div>
-</div>
-@endsection
+  </body>
+</html>

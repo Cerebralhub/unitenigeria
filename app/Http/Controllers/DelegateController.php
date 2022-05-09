@@ -7,93 +7,141 @@ use App\Models\Delegate;
 
 class DelegateController extends Controller
 {
-    //
-    public function index()
+    public function create()
     {
+        return view('profile/form');
+    }
 
-        if(!session()->has('user')){
-            return redirect('/login')->with('warning', 'Please login to access the list of those who have registered');
+    public function register(Request $request)
+    {
+        $delegate = new Delegate;
+        $delegate->title = $request->input('title');
+        $delegate->name = $request->input('name');
+        $delegate->gender = $request->input('gender');
+        $delegate->state = $request->input('state');
+        $delegate->lga = $request->input('lga');
+        $delegate->representing = $request->input('representing');
+        $delegate->constituency = $request->input('constituency');
+        $delegate->year = $request->input('year');
+        $delegate->business1 = $request->input('business1');
+        $delegate->business2 = $request->input('business2');
+        $delegate->business3 = $request->input('business3');
+        $delegate->business4 = $request->input('business4');
+        $delegate->business5 = $request->input('business5');
+        $delegate->business6 = $request->input('business6');
+        $delegate->view = $request->input('view');
+        $delegate->former = $request->input('former');
+        $delegate->phone = $request->input('phone');
+        $delegate->email = $request->input('email');
+        $delegate->facebook = $request->input('lga');
+        $delegate->instagram = $request->input('instagram');
+        $delegate->twitter = $request->input('twitter');
+        $delegate->linkedln = $request->input('linkedln');
 
-        }else{
-        if(request()->ajax()) {
-            return datatables()->of(Delegate::select('*'))
-            ->addColumn('action', 'delegate/delegate-action')
-            ->rawColumns(['action'])
-            ->addIndexColumn()
-            ->make(true);
+        if($request->file('photo')){
+            $file= $request->file('photo');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('uploads/profiles'), $filename);
+            $delegate['photo']= $filename;
         }
-        return view('delegate/delegate-list');
+
+        $delegate->save();        
+        
+    	$shows = Delegate::where('email', $delegate->email)->get();
+        return view('delegate/profile3', compact('shows'));
     }
-}
-     
-     
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {  
 
-        if(!session()->has('user')){
-            return redirect('/login')->with('warning', 'Please login to access the list of those who have registered');
 
-        }else{
-        $bookId = $request->id;
-        $book   =   Delegate::updateOrCreate(
-                    [
-                     'id' => $bookId
-                    ],
-                    [
-                    'name' => $request->name, 
-                    'state' => $request->state,
-                    'lga' => $request->lga,
-                    'category' => $request->category,
-                    'phone_no' => $request->phone_no,
-                    'email' => $request->email
-                    ]);        
-        return Response()->json($book);
-    }
-}
-     
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\book  $book
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Request $request)
-    {   
 
-        if(!session()->has('user')){
-            return redirect('/login')->with('warning', 'Please login to access the list of those who have registered');
-
-        }else{
-        $where = array('id' => $request->id);
-        $book  = Delegate::where($where)->first();
-     
-        return Response()->json($book);
-    }
-}
-     
-     
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\book  $book
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Request $request)
+    public function list()
     {
-        if(!session()->has('user')){
-            return redirect('/login')->with('warning', 'Please login to access the list of those who have registered');
-
-        }else{
-        $book = Delegate::where('id',$request->id)->delete();
-     
-        return Response()->json($book);
+        $list = Delegate::all();
+        return view('delegate/view', compact('list'));
     }
-}
+
+
+
+
+
+
+    public function form()
+    {
+        return view('delegate/form');
+    }
+
+
+
+
+
+    public function profile()
+    {
+        $shows = Delegate::all();
+        return view('delegate/profile', compact('shows'));
+    }
+
+
+    
+    public function single($id)
+    {
+        $show = Delegate::findOrFail($id);
+        return view ('delegate/profile2', ['show'=>$show]);
+    }
+
+
+    public function edit($id)
+    {
+        $show = Delegate::findOrFail($id);
+        return view('delegate/edit', compact('show'));
+    }
+
+    public function delete($id)  
+    {  
+        Delegate::destroy($id);  
+        return redirect('/delegate-list')->with('danger', 'Delegate deleted');
+
+    }  
+
+
+
+    public function update(Request $request, $id)
+    {
+        
+        $delegate = Delegate::find($id);
+        $delegate->title = $request->input('title');
+        $delegate->name = $request->input('name');
+        $delegate->gender = $request->input('gender');
+        $delegate->state = $request->input('state');
+        $delegate->lga = $request->input('lga');
+        $delegate->representing = $request->input('representing');
+        $delegate->constituency = $request->input('constituency');
+        $delegate->year = $request->input('year');
+        $delegate->business1 = $request->input('business1');
+        $delegate->business2 = $request->input('business2');
+        $delegate->business3 = $request->input('business3');
+        $delegate->business4 = $request->input('business4');
+        $delegate->business5 = $request->input('business5');
+        $delegate->business6 = $request->input('business6');
+        $delegate->view = $request->input('view');
+        $delegate->former = $request->input('former');
+        $delegate->phone = $request->input('phone');
+        $delegate->email = $request->input('email');
+        $delegate->facebook = $request->input('lga');
+        $delegate->instagram = $request->input('instagram');
+        $delegate->twitter = $request->input('twitter');
+        $delegate->linkedln = $request->input('linkedln');
+
+        if($request->file('photo')){
+            $file= $request->file('photo');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('uploads/profiles'), $filename);
+            $delegate['photo']= $filename;
+        }
+
+        $delegate->save();        
+        
+    	$show = Delegate::findOrFail($id);
+        return view ('delegate/profile2', ['show'=>$show]);
+    }
+
 }
 

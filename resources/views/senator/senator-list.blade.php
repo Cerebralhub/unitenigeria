@@ -195,7 +195,7 @@
 					</li>
 
           <li class="dropdown">
-						<a href="" class="dropdown-toggle no-arrow">
+						<a href="/profile" class="dropdown-toggle no-arrow">
 							<span class="micon dw dw-file-4"></span><span class="mtext">Profile</span>
 						</a>
 					</li>
@@ -211,7 +211,7 @@
 		</div>
 	</div>
 		</div>
-	<div class="mobile-menu-overlay"></div>
+	<!-- <div class="mobile-menu-overlay"></div> -->
 
 
 
@@ -220,7 +220,7 @@
 
   <div class="card" style="padding-top: 100px;">
 
-    <div class="card-header text-center font-weight-bold">
+    <div class="card-header text-center">
       <h2>Serving Senators</h2>
     </div>
     <div class="col-md-12 mt-1 mb-2"><br/>
@@ -230,7 +230,7 @@
 
         <table class="table table-bordered" id="datatable-ajax-crud">
            <thead>
-              <tr>
+              <tr style="font-weight: 500;">
                  <th>Id</th>
                  <th>Name</th>
                  <th>State</th>
@@ -442,8 +442,8 @@
           var status = $("#status").val();
           var feedback = $("#feedback").val();
 
-          $("#btn-save").html('Please wait...');
-          $("#btn-save"). attr("disabled", true);
+          $("#btn-save").html('Submit...');
+          $("#btn-save"). attr("disabled", false);
          
           // ajax
           $.ajax({
@@ -478,7 +478,8 @@
 <!-- js -->
 <!-- <script src="vendors/scripts/core.js"></script> -->
 	<script src="vendors/scripts/script.min.js"></script>
-	<!-- <script src="vendors/scripts/process.js"></script> -->
+
+  <!-- <script src="vendors/scripts/process.js"></script> -->
 	<!-- <script src="vendors/scripts/layout-settings.js"></script> -->
 	<!-- <script src="src/plugins/apexcharts/apexcharts.min.js"></script> -->
 	<!-- <script src="vendors/scripts/dashboard.js"></script> -->

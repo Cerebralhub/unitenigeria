@@ -194,7 +194,7 @@
 					</li>
 
           <li class="dropdown">
-						<a href="" class="dropdown-toggle no-arrow">
+						<a href="/profile" class="dropdown-toggle no-arrow">
 							<span class="micon dw dw-file-4"></span><span class="mtext">Profile</span>
 						</a>
 					</li>

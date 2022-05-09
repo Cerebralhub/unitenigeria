@@ -16,14 +16,19 @@
 	<!-- Google Font -->
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
-	<link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
-	<link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/dataTables.bootstrap4.min.css">
-	<link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/responsive.bootstrap4.min.css">
-	<link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
-	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/core.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/icon-font.min.css') }} ">
+	<link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/datatables/css/dataTables.bootstrap4.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/datatables/css/responsive.bootstrap4.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/style.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/profile.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/form.css') }}">
+
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"/>
 
 
 
@@ -38,34 +43,28 @@
 	</script>
 </head>
 <body>
-	<div class="pre-loader">
-		<div class="pre-loader-box">
-			<!-- <div class="loader-logo"><img src="vendors/images/itistime.png" style="width:20%" alt=""></div> -->
-			<div class='loader-progress' id="progress_div">
-				<div class='bar' id='bar1'></div>
-			</div>
-			<div class='percent' id='percent1'>0%</div>
-			<div class="loading-text">
-				Loading...
-			</div>
-				</div>
-			</div>
-
-	<div class="header">
+	
+<div class="header">
 		<div class="header-left">
 			<div class="menu-icon dw dw-menu"></div>
-			<!-- <div class="search-toggle-icon dw dw-search2" data-toggle="header_search">
-			</div> -->
-			<div class="" style="padding-left: 20px;">
-				<a href="/dashboard"><h6>Home</h6></a>
+			<div class="search-toggle-icon dw dw-search2" data-toggle="header_search"></div>
 			
-			</div>
-			<div class="header-search">
-				<!-- <h6>Home</h6> -->
-			</div>
+
 		</div>
 		<div class="header-right">
+			<div class="dashboard-setting user-notification">
+				
+			</div>
+			<div class="user-notification">
+				
 
+			</div>
+			<div class="user-info-dropdown">
+				
+
+
+			</div>
+			
 		</div>
 	</div>
 
@@ -145,13 +144,13 @@
 	</div>
 
 
-	<div class="row">
-		<div class="col-md-2">
+
+
 	<div class="left-side-bar">
 		<div class="brand-logo">
 			<a href="/dashboard">
-				<img src="vendors/images/un.png" style="height:100%" alt="" class="dark-logo">
-				<img src="vendors/images/un.png" style="height:100%" class="light-logo">
+				<img src="{{ asset('vendors/images/un.png') }}" style="height:100%" alt="" class="dark-logo">
+				<img src="{{ asset('vendors/images/un.png') }}" style="height:100%" class="light-logo">
 			</a>
 			<div class="close-sidebar" data-toggle="left-sidebar-close">
 				<i class="ion-close-round"></i>
@@ -166,46 +165,28 @@
 						</a>
 					</li>
 					
-					<!-- <li class="dropdown">
+					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon dw dw-house-1"></span><span class="mtext">Serving Executives</span>
+						<span class="micon dw dw-user-1"></span><span class="mtext">Delegates</span>
 						</a>
 						<ul class="submenu">
-							<li><a href="/senator">Serving Senators</a></li>
-							<li><a href="/hor">House of Rep</a></li>
+							<li><a href="/delegate-list">Delegate List</a></li>
+							<li><a href="/delegate-form">Add Delegate</a></li>
+							<li><a href="/delegate-profile">View Profile</a></li>
 						</ul>
-					</li> -->
-					<li class="dropdown">
+					</li>
+					<!-- <li class="dropdown">
 						<a href="/delegate" class="dropdown-toggle no-arrow">
 							<span class="micon dw dw-user-1"></span><span class="mtext">Delegates</span>
 						</a>
-					</li>
+					</li> -->
 
-					<li class="dropdown">
-						<a href="/senator" class="dropdown-toggle no-arrow">
-						<span class="micon dw dw-user-2"></span><span class="mtext">Serving Senators</span>
-						</a>
-					</li>
-
-					<li class="dropdown">
-						<a href="/hor" class="dropdown-toggle no-arrow">
-						<span class="micon dw dw-house"></span></span><span class="mtext">House of Representative</span>
-						</a>
-					</li>
-
-					<li class="dropdown">
-						<a href="/hoa" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-home"></span><span class="mtext">House of Assemblies</span>
-						</a>
-					</li>
-
-
+					
 					<li class="dropdown">
 						<a href="/supporter" class="dropdown-toggle no-arrow">
 							<span class="micon dw dw-user-3"></span><span class="mtext">Registered Supporter</span>
 						</a>
 					</li>
-
 					
 					
 					<li class="dropdown">
@@ -215,8 +196,13 @@
 					</li>
 
 					<li class="dropdown">
-						<a href="" class="dropdown-toggle no-arrow">
+						<a href="/profile" class="dropdown-toggle no-arrow">
 							<span class="micon dw dw-file-4"></span><span class="mtext">Profile</span>
+						</a>
+					</li>
+					<li class="dropdown">
+						<a href="" class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-file-4"></span><span class="mtext">Work Plan</span>
 						</a>
 					</li>
 					
@@ -225,28 +211,35 @@
 							<span class="micon dw dw-mail"></span><span class="mtext">Send Message</span>
 						</a>
 					</li>
+					<li class="dropdown">
+						<a href="/logout" class="dropdown-toggle no-arrow">
+							<span class=""></span><span class="mtext">Log out</span>
+						</a>
+					</li>
 					
 				</ul>
 			</div>
 		</div>
 	</div>
-		</div>
-	<div class="mobile-menu-overlay"></div>
-<div class="col-md-10">
-	@yield('content')
-</div>
-	</div>
 
+
+	<div class="mobile-menu-overlay"></div>
+	
+	<div class="main-container">
+		<div class="pd-ltr-20">
+	@yield('content')
+		</div>
+	</div>
 	<!-- js -->
-	<script src="vendors/scripts/core.js"></script>
-	<script src="vendors/scripts/script.min.js"></script>
-	<script src="vendors/scripts/process.js"></script>
-	<script src="vendors/scripts/layout-settings.js"></script>
-	<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
-	<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-	<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
-	<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-	<script src="vendors/scripts/dashboard.js"></script>
+	<script src="{{ asset('vendors/scripts/core.js') }}"></script>
+	<script src="{{ asset('vendors/scripts/script.min.js') }}"></script>
+	<script src=" {{ asset('vendors/scripts/process.js') }}"></script>
+	<script src="{{ asset('vendors/scripts/layout-settings.js') }} "></script>
+	<script src="{{asset(' src/plugins/datatables/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{asset(' src/plugins/datatables/js/dataTables.bootstrap4.min.js') }}"></script>
+	<script src="{{ asset('src/plugins/datatables/js/dataTables.responsive.min.js') }}"></script>
+	<script src="{{ asset('src/plugins/datatables/js/responsive.bootstrap4.min.js') }} "></script>
+	<script src="{{ asset('vendors/scripts/dashboard.js') }}"></script>
 
 </body>
 </html>

@@ -9,6 +9,29 @@ class Delegate extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name', 'state', 'lga', 'category', 'phone_no', 'email'
+        'title',
+        'name', 
+        'gender', 
+        'state', 
+        'lga', 
+        'representing',
+        'constituency',
+        'year', 
+        'business1', 
+        'business2', 
+        'business3', 
+        'business4',
+        'business5',
+        'business6', 
+        'view', 
+        'former', 
+        'phone', 
+        'email',
+        'facebook',
+        'instagram', 
+        'twitter', 
+        'linkedln',
+        'photo'
+    
     ];
 }

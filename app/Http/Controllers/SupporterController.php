@@ -68,4 +68,5 @@ class SupporterController extends Controller
             return redirect('/supporter')->with('success', 'The record has been deleted');
             }
         }  
+
 }

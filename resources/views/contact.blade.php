@@ -2,7 +2,7 @@
 @section("content")
 
 
-<div class="main" style="padding-top: 120px;">
+<div class="main">
 	
 		<h1 class="text-center">Voters Contact</h1><br/>
 
