@@ -182,7 +182,7 @@
 					</li> -->
 
 					
-					<li class="dropdown">
+					<!-- <li class="dropdown">
 						<a href="/supporter" class="dropdown-toggle no-arrow">
 							<span class="micon dw dw-user-3"></span><span class="mtext">Registered Supporter</span>
 						</a>
@@ -210,7 +210,7 @@
 						<a href="" class="dropdown-toggle no-arrow">
 							<span class="micon dw dw-mail"></span><span class="mtext">Send Message</span>
 						</a>
-					</li>
+					</li> -->
 					<li class="dropdown">
 						<a href="/logout" class="dropdown-toggle no-arrow">
 							<span class=""></span><span class="mtext">Log out</span>
