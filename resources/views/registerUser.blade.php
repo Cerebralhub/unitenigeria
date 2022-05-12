@@ -37,19 +37,20 @@
 
        @csrf
 
-       <div class="form-group">
-           <label>Surname:</label>
-           <input type="text" name="sname" class="form-control" placeholder="">
-           @if ($errors->has('sname'))
-               <span class="text-danger">{{ $errors->first('sname') }}</span>
-           @endif
-       </div>
 
        <div class="form-group">
            <label>First Name:</label>
            <input type="text" name="fname" class="form-control" placeholder="">
            @if ($errors->has('fname'))
                <span class="text-danger">{{ $errors->first('fname') }}</span>
+           @endif
+       </div>
+
+       <div class="form-group">
+           <label>Surname:</label>
+           <input type="text" name="lname" class="form-control" placeholder="">
+           @if ($errors->has('lname'))
+               <span class="text-danger">{{ $errors->first('lname') }}</span>
            @endif
        </div>
 
@@ -82,8 +83,8 @@
 
        <div class="form-group">
            <button class="btn btn-success btn-submit">Create account</button>
-           <a href="/login"> | Log in</a>
        </div>
+       <a href="/login"> | Log in</a>
    </form>
 </div><br/><br/>
 </div>

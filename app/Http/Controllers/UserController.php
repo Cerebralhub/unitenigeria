@@ -56,8 +56,8 @@ class UserController extends Controller
 
         $req->validate(
             [
-                'sname' => 'required',
                 'fname' => 'required',
+                'lname' => 'required',
                 'email' => 'required|email|unique:users',
                 'token' => 'required',
                 'password' => 'required|min:5'
@@ -65,8 +65,8 @@ class UserController extends Controller
 
             ], 
             [
-                'sname.required' => 'Surname is required',
                 'fname.required' => 'First Name is required',
+                'lname.required' => 'Surname is required',
                 'email.required' => 'Email is required',
                 'password.required' => 'Password is required',
                 'token.required' => 'License Key is required',
@@ -75,22 +75,22 @@ class UserController extends Controller
           );
 
 
-        $user = User::where(['email'=>'token@gmail.com'])->first(); 
-        if(!Hash::check($req->token, $user->token))
-        {
-            return back()->with('warning', 'License key is invalid.');
-        }else{
+        // $user = User::where(['email'=>'token@gmail.com'])->first(); 
+        // if(!Hash::check($req->token, $user->token))
+        // {
+        //     return back()->with('warning', 'License key is invalid.');
+        // }else{
         $user = new User;
-        $user->sname=$req->sname;
         $user->fname=$req->fname;
+        $user->lname=$req->lname;
         $user->email=$req->email;
         $user->token=Hash::make($req->token);
         $user->password=Hash::make($req->password);
         $user->save();
       
-        return back()->with('success', 'User created successfully.');
+        return redirect ('/dashboard');
 
-        }
+        // }
     
     }
 
