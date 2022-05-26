@@ -52,8 +52,8 @@ Route::post('/import',[DelegateController::class,'import'])->name('import');
 Route::get('/export-users',[DelegateController::class,'exportUsers'])->name('export-users');
 
 
-
-Route::get('/lagos-view',[LagosController::class,'importView'])->name('import-view');
+Route::get('lagos',[LagosController::class, 'index']);
+Route::get('/lagos-upload',[LagosController::class,'importView'])->name('import-view');
 Route::post('/laImport',[LagosController::class,'laImport'])->name('laImport');
 Route::get('/laExport',[LagosController::class,'laExport'])->name('laExport');
 

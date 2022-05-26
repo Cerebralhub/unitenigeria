@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Lagos;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
-use App\Imports\ImportUser;
-use App\Exports\ExportUser;
+use App\Imports\ImportLagos;
+use App\Exports\ExportLagos;
 
 class LagosController extends Controller
 {
@@ -17,8 +17,8 @@ class LagosController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $list = Lagos::all();
+        return view('lagos/view', compact('list'));    }
 
     /**
      * Show the form for creating a new resource.
@@ -92,11 +92,11 @@ class LagosController extends Controller
     }
 
     public function laImport(Request $request){
-        Excel::import(new ImportUser, $request->file('file')->store('files'));
+        Excel::import(new ImportLagos, $request->file('file')->store('files'));
         return redirect()->back();
     }
 
     public function laExport(Request $request){
-        return Excel::download(new ExportUser, 'users.xlsx');
+        return Excel::download(new ExportLagos, 'users.xlsx');
     }
 }

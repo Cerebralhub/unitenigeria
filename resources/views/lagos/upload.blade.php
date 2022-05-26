@@ -4,7 +4,7 @@
 
     <div class="container mt-5 text-center">
         <h2 class="mb-4">
-            Upload/Download Delegate File
+            Upload/Download Lagos Contact
         </h2>
         <form action="{{ route('laImport') }}" method="POST" enctype="multipart/form-data">
             @csrf

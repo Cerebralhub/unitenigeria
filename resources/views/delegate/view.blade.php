@@ -175,7 +175,15 @@
 						</ul>
 					</li>
 					
-
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+						<span class="micon dw dw-user-1"></span><span class="mtext">State</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="/lagos">Lagos</a></li>
+							<li><a href="#">Abia</a></li>
+						</ul>
+					</li>
 					
 					<li class="dropdown">
 						<a href="/logout" class="dropdown-toggle no-arrow">

@@ -180,41 +180,16 @@
 						</a>
 					</li> -->
 
-					
-					<!-- <li class="dropdown">
-						<a href="/supporter" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-user-3"></span><span class="mtext">Registered Supporter</span>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+						<span class="micon dw dw-user-1"></span><span class="mtext">State</span>
 						</a>
+						<ul class="submenu">
+							<li><a href="/lagos">Lagos</a></li>
+							<li><a href="#">Abia</a></li>
+						</ul>
 					</li>
 					
-					
-					<li class="dropdown">
-						<a href="/contact" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-file-4"></span><span class="mtext">Contact</span>
-						</a>
-					</li>
-
-					<li class="dropdown">
-						<a href="/profile" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-file-4"></span><span class="mtext">Profile</span>
-						</a>
-					</li>
-					<li class="dropdown">
-						<a href="" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-file-4"></span><span class="mtext">Work Plan</span>
-						</a>
-					</li>
-					
-					<li class="dropdown">
-						<a href="" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-mail"></span><span class="mtext">Send Message</span>
-						</a>
-					</li> -->
-					<li class="dropdown">
-						<a href="/logout" class="dropdown-toggle no-arrow">
-							<span class=""></span><span class="mtext">Log out</span>
-						</a>
-					</li>
 					
 				</ul>
 			</div>

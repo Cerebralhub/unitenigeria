@@ -175,7 +175,15 @@
 						</ul>
 					</li>
 					
-
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+						<span class="micon dw dw-user-1"></span><span class="mtext">State</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="/lagos">Lagos</a></li>
+							<li><a href="#">Abia</a></li>
+						</ul>
+					</li>
 					
 					<li class="dropdown">
 						<a href="/logout" class="dropdown-toggle no-arrow">
@@ -209,8 +217,8 @@
 						</div>
 						<div class="col-md-6 col-sm-12 text-right">
 							<div class="dropdown">
-								<a href="delegate-form" class="btn btn-primary"  role="button">
-									Add Delegate
+								<a href="/lagos-upload" class="btn btn-primary"  role="button">
+									Upload Lagos Contact
 								</a>
 								
 							</div>
@@ -232,12 +240,12 @@
                         <tr>
 									<!-- <th class="table-plus datatable-nosort">Name</th> -->
                                     <th>S/N</th>
-                                    <th>Title</th>
-                                    <th>Name</th>
-									<th>State</th>
                                     <th>LGA</th>
-									<th>Constituency / Senatorial District</th>
-									<th>Year</th>
+                                    <th>Ward</th>
+									<th>Polling Unit</th>
+                                    <th>Surname</th>
+									<th>First Name</th>
+									<th>Gender</th>
 									<th class="datatable-nosort">Action</th>
 								</tr>
 						</thead>
@@ -246,12 +254,12 @@
                             @foreach ($list as $item)
 								<tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$item->title}}</td>
-                                <td>{{$item->name}}</td>
-                                <td>{{$item->state}}</td>
                                 <td>{{$item->lga}}</td>
-                                <td>{{$item->constituency}}</td>
-                                <td>{{$item->year}}</td>
+                                <td>{{$item->ward}}</td>
+                                <td>{{$item->pu}}</td>
+                                <td>{{$item->lname}}</td>
+                                <td>{{$item->fname}}</td>
+                                <td>{{$item->gender}}</td>
 									<td>
 										<div class="dropdown">
 											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
