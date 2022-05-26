@@ -25,8 +25,8 @@
                     <span class="details">Gender</span>
                     <select onchange="toggleLGA(this);" name="gender" class="form-control" required="">  
                     <option value="" selected="selected">...</option>
-                        <option value="State">Male</option>
-                        <option value="LGA">Female</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
                     </select>
                 </div>
                 <div class="input-box">
@@ -147,7 +147,10 @@
                 <div class="image">
                     <span class="details">Upload Profile Picture</span>
                     <div class="upload">
-                    <input name="photo" type="file" id="image" class="form-group"  required>    
+                    <input name="photo" type="file" id="image" class="form-group"  required>  
+                    @error('photo')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror  
                     </div>
                 </div>
 

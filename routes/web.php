@@ -4,16 +4,9 @@ use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\SenatorController;
-use App\Http\Controllers\HorController;
-use App\Http\Controllers\SupporterController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\HoaController;
-use App\Http\Controllers\LagosassembController;
+use App\Http\Controllers\LagosController;
 use App\Http\Controllers\DelegateController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\ProductController;
+
 
 
 
@@ -35,38 +28,13 @@ Route::get('/', function () {
 });
 
 
-Route::get('/work', function () {
-    return view('work-plan/index');
+Route::get('/contact', function () {
+    return view('/contact');
 });
 
 
+
 Route::get('/dashboard', [DashboardController::class, 'dash']);
-
-Route::get('/senator', [SenatorController::class, 'index']);
-Route::post('/add-senator', [SenatorController::class, 'store']);
-Route::post('/edit-senator', [SenatorController::class, 'edit']);
-Route::post('/delete-senator', [SenatorController::class, 'destroy']);
-
-
-Route::get('/hor', [HorController::class, 'index']);
-Route::post('/add-hor', [HorController::class, 'store']);
-Route::post('/edit-hor', [HorController::class, 'edit']);
-Route::post('/delete-hor', [HorController::class, 'destroy']);
-
-
-Route::get('/supporter', [SupporterController::class, 'index']);
-Route::any('/add_supporter', [SupporterController::class,'register']);
-Route::any('/register_supporter', [SupporterController::class,'create']);
-Route::any('/delete_supporter/{id}', [SupporterController::class,'destroy']);
-
-Route::get('/hoa', [HoaController::class, 'index']);
-Route::get('/contact', [ContactController::class, 'index']);
-
-
-Route::get('/lagos-assembly', [LagosassembController::class, 'index']);
-Route::post('/add-lagos-assembly', [LagosassembController::class, 'store']);
-Route::post('/edit-lagos-assembly', [LagosassembController::class, 'edit']);
-Route::post('/delete-lagos-assembly', [LagosassembController::class, 'destroy']);
 
 
 Route::get('/delegate', [DelegateController::class, 'list']);
@@ -79,20 +47,19 @@ Route::get('delegate-edit/{id}', [DelegateController::class, 'edit']);
 Route::get('delegate-delete/{id}', [DelegateController::class, 'delete']);
 Route::patch('delegate-update/{id}', [DelegateController::class, 'update']);
 
-
-Route::get('/test', [UserController::class, 'create']);
-Route::get('/test', [UserController::class, 'create']);
-Route::post('/test', [UserController::class, 'store']);
-
+Route::get('/file-import',[DelegateController::class,'importView'])->name('import-view');
+Route::post('/import',[DelegateController::class,'import'])->name('import');
+Route::get('/export-users',[DelegateController::class,'exportUsers'])->name('export-users');
 
 
-Route::get('profile', [ProfileController::class, 'index']);
-Route::get('add-profile', [ProfileController::class, 'create']);
-Route::post('add-profile', [ProfileController::class, 'store']);
-Route::get('edit-profile/{id}', [ProfileController::class, 'edit']);
-Route::put('update-profile/{id}', [ProfileController::class, 'update']);
-Route::delete('delete-profile/{id}', [ProfileController::class, 'destroy']);
-Route::get('search-profile', [ProfileController::class, 'search']);
+
+Route::get('/lagos-view',[LagosController::class,'importView'])->name('import-view');
+Route::post('/laImport',[LagosController::class,'laImport'])->name('laImport');
+Route::get('/laExport',[LagosController::class,'laExport'])->name('laExport');
+
+
+
+
 
 
 
@@ -106,8 +73,6 @@ Route::post("/login", [UserController::class,'login']);
 
 Route::get("/viewRegistrants", [RegController::class,'regList']);
 Route::any("/filterRegistrants", [RegController::class,'filter']);
-// Route::any("/delete/{id}", [RegController::class,'destroy']);
-
 
 
 Route::get('/logout', function () {

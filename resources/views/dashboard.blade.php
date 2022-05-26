@@ -35,9 +35,7 @@
 						<div class="d-flex flex-wrap align-items-cente9*/r">
 						<div class="dash-stat">
 								<h1>Registered Supporters
-									 </h1><br/><br/>
-								<h5>{{count($supporter)}} Members</h5>
-								
+									 </h1><br/><br/>								
 							</div>
 						</div>
 					</div>

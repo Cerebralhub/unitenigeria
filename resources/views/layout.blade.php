@@ -172,7 +172,6 @@
 						<ul class="submenu">
 							<li><a href="/delegate-list">Delegate List</a></li>
 							<li><a href="/delegate-form">Add Delegate</a></li>
-							<li><a href="/delegate-profile">View Profile</a></li>
 						</ul>
 					</li>
 					<!-- <li class="dropdown">

@@ -75,11 +75,11 @@ class UserController extends Controller
           );
 
 
-        // $user = User::where(['email'=>'token@gmail.com'])->first(); 
-        // if(!Hash::check($req->token, $user->token))
-        // {
-        //     return back()->with('warning', 'License key is invalid.');
-        // }else{
+        $user = User::where(['email'=>'token@gmail.com'])->first(); 
+        if(!Hash::check($req->token, $user->token))
+        {
+            return back()->with('warning', 'License key is invalid.');
+        }else{
         $user = new User;
         $user->fname=$req->fname;
         $user->lname=$req->lname;
@@ -88,9 +88,9 @@ class UserController extends Controller
         $user->password=Hash::make($req->password);
         $user->save();
       
-        return redirect ('/dashboard');
+        return view ('/dashboard');
 
-        // }
+        }
     
     }
 

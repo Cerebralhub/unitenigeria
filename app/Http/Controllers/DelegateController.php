@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ImportUser;
+use App\Exports\ExportUser;
 use App\Models\Delegate;
 
 class DelegateController extends Controller
@@ -38,7 +41,12 @@ class DelegateController extends Controller
         $delegate->twitter = $request->input('twitter');
         $delegate->linkedln = $request->input('linkedln');
 
+        $request->validate([
+            'photo' => 'required|mimes:png,jpg,jpeg|max:1048'
+        ]);
+
         if($request->file('photo')){
+               
             $file= $request->file('photo');
             $filename= date('YmdHi').$file->getClientOriginalName();
             $file-> move(public_path('uploads/profiles'), $filename);
@@ -141,6 +149,23 @@ class DelegateController extends Controller
         
     	$show = Delegate::findOrFail($id);
         return view ('delegate/profile2', ['show'=>$show]);
+    }
+
+
+
+
+
+    public function importView(Request $request){
+        return view('delegate/upload');
+    }
+
+    public function import(Request $request){
+        Excel::import(new ImportUser, $request->file('file')->store('files'));
+        return redirect()->back();
+    }
+
+    public function exportUsers(Request $request){
+        return Excel::download(new ExportUser, 'users.xlsx');
     }
 
 }
